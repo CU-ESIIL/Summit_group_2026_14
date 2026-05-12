@@ -19,7 +19,7 @@ public_mode_toggle: true
     - If you turn off 'Instructions' then you will only see the page content for public display.
     
 
-# Team 14 Home: Make Me Your Own
+# Team 14 Home: AI-enhanced Physics Models
 
 !!! note "Day 1 directions"
     Change the title to the name of your project.
