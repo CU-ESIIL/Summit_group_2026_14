@@ -1,5 +1,5 @@
 ---
-title: AI-enhanced Physics Models
+title: AI-Physics Hybrid Modeling
 public_mode_toggle: true
 ---
 
@@ -19,7 +19,7 @@ public_mode_toggle: true
     - If you turn off 'Instructions' then you will only see the page content for public display.
     
 
-# Team 14 Home: AI-enhanced Physics Models
+# Team 14 Home: AI-Physics Hybrid Modeling
 
 !!! note "Day 1 directions"
     Change the title to the name of your project.
