@@ -1,5 +1,5 @@
 ---
-title: Team Home
+title: AI-enhanced Physics Models
 public_mode_toggle: true
 ---
 
@@ -62,8 +62,9 @@ public_mode_toggle: true
 
 | Name | Affiliation | Contact | Github |
 |---|---|---|---|
-| | | | |
-| | | | |
+| Fenghui Yuan| U of Minnesota | fyuan@umn.edu | fhyuancn |
+| Mo Ahmadi| Purdue Univeristy | mahmadig@purdue.edu|mahmadig |
+| Abdulganiyu Jimoh| Utah State Univeristy | abdulganiyu.jimoh@usu.edu|Jimoh1993|
 
 ## Team Norms and Decision Making { #team-norms-and-decision-making }
 
