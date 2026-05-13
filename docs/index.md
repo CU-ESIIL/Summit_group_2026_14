@@ -414,7 +414,7 @@ Each approach offers unique strengths:
     - If you turn off 'Instructions' then you will only see the page content for public display.
     
 
-# Integrating AI Tools with Physics-based Models
+## Integrating AI Tools with Physics-based Models
 
 !!! note "Day 1 directions"
     Change the title to the name of your project.
