@@ -3,6 +3,166 @@ title: AI-Physics Hybrid Modeling
 public_mode_toggle: true
 ---
 
+# Introduction
+
+Spectral measurements acquired from spectrometers often contain unwanted signal components arising from background reflectance, absorption, scattering, and instrument-related artifacts. These interfering contributions can obscure the true spectral signature of the target material and reduce the accuracy of downstream analyses such as material identification, quantitative estimation, and machine learning-based prediction.
+
+This project presents a **physics-based signal correction framework** for removing unwanted background contributions from measured spectra. The approach is grounded in the principles of **radiative transfer** and the **Beer–Lambert Law**, which describe how electromagnetic radiation is attenuated as it propagates through an absorbing and scattering medium. By explicitly modeling the physical processes that alter the signal, the method provides a transparent and scientifically interpretable alternative to purely data-driven denoising techniques.
+
+---
+
+## Forward Model
+
+The measured reflectance spectrum is modeled as:
+
+```math
+R_m(\lambda) = R_w(\lambda) + \left(R_{bg}(\lambda) - R_w(\lambda)\right)e^{-2K_d(\lambda)z}
+```
+
+---
+
+## Variable Definitions
+
+| Variable | Description |
+|--------|--------|
+| `R_m(\lambda)` | Reflectance measured by the spectrometer at wavelength `\lambda` |
+| `R_w(\lambda)` | Baseline reflectance of the medium at wavelength `\lambda` |
+| `R_{bg}(\lambda)` | Unwanted background signal before attenuation at wavelength `\lambda` |
+| `K_d(\lambda)` | Diffuse attenuation coefficient at wavelength `\lambda` |
+| `z` | Optical path length or depth |
+| `\lambda` | Wavelength |
+| `e` | Euler's number (`2.71828...`) |
+
+---
+
+## Physical Interpretation
+
+The model assumes that the unwanted background signal (`R_{bg}(\lambda)`) is attenuated as light propagates through an absorbing and scattering medium.
+
+1. The unwanted signal originates from a background source.
+2. The signal is reduced according to the exponential attenuation term.
+3. The attenuated signal is combined with the baseline reflectance (`R_w(\lambda)`).
+4. The resulting spectrum is recorded as the measured reflectance (`R_m(\lambda)`).
+
+This behavior is consistent with the Beer–Lambert Law and radiative transfer theory.
+
+---
+
+## Inverse Model
+
+Rearranging the forward model yields an analytical solution for estimating the original unwanted signal:
+
+```math
+R_{bg}(\lambda) = R_w(\lambda) + \left(R_m(\lambda) - R_w(\lambda)\right)e^{2K_d(\lambda)z}
+```
+
+This inverse formulation enables the recovery and subsequent removal of background contributions from the measured spectrum.
+
+> **Note:** The exponent is positive (`e^{2K_d(\lambda)z}`) when solving algebraically for `R_{bg}(\lambda)`.
+
+---
+
+## Why This Is a Physics-Based Model
+
+This approach is considered physics-based because:
+
+- It is derived from radiative transfer principles.
+- All parameters have physical meaning.
+- It uses exponential attenuation consistent with known optical laws.
+- It does not rely solely on statistical fitting or black-box learning.
+
+---
+
+## Key Features
+
+Unlike purely data-driven machine learning approaches, the proposed model:
+
+- Uses physically meaningful parameters.
+- Can be applied effectively with limited data.
+- Is computationally efficient.
+- Produces reproducible results.
+- Provides strong scientific interpretability.
+- Supports sensitivity analysis.
+
+---
+
+## Advantages
+
+- **Physically interpretable**  
+  Every parameter has a clear scientific meaning.
+
+- **Works with small datasets**  
+  Does not require large amounts of training data.
+
+- **Generalizes well when assumptions are valid**  
+  Can perform well beyond the calibration dataset.
+
+- **Transparent and reproducible**  
+  Researchers can inspect and validate each assumption.
+
+- **Low risk of overfitting**  
+  Based on analytical equations rather than highly flexible models.
+
+- **Computationally efficient**  
+  Requires only direct mathematical calculations.
+
+---
+
+## Limitations
+
+- **Requires accurate assumptions**  
+  Performance depends on how well the model represents reality.
+
+- **May oversimplify complex systems**  
+  Real environments may contain nonlinear interactions.
+
+- **Needs parameter estimation**  
+  Attenuation coefficients may be difficult to determine.
+
+- **Sensitive to parameter errors**  
+  Small inaccuracies can lead to biased corrections.
+
+- **May miss unknown effects**  
+  Instrument artifacts or unexpected phenomena may remain.
+
+---
+
+## Applications
+
+This framework is well suited for:
+
+- Spectroscopy
+- Remote sensing
+- Water quality analysis
+- Optical attenuation studies
+- Background signal removal
+- Spectral preprocessing
+
+---
+
+## Hybrid Physics-Informed Autoencoder
+
+To further enhance performance, this project also explores a **hybrid physics-informed autoencoder** that combines the interpretability of the analytical model with the flexibility of deep learning.
+
+In this hybrid approach, the physics-based correction is used either as:
+
+- A preprocessing step before neural network training, or
+- A physical constraint incorporated into the loss function.
+
+This enables robust removal of both known and unknown spectral artifacts.
+
+---
+
+## Project Goal
+
+The goal of this project is to develop a scientifically grounded and scalable solution for spectral signal correction by integrating first-principles modeling with modern machine learning techniques.
+
+---
+
+## Conclusion
+
+This project provides a transparent and scientifically rigorous framework for removing unwanted spectral signals. By combining physical modeling with optional machine learning enhancements, the approach offers both interpretability and high-performance spectral correction.
+
 # Spectral Signal Correction Approaches
 
 Fong: What are the current issues/weakness during spectral signal correction with traditional physics-based model? Will the ML or AI tools be able improve those weakness (with the strenghs of ML models)? In which ways (improve which parts of the physics models?) will we use to improve the weakness of physics-based model?
