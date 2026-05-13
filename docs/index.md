@@ -5,6 +5,8 @@ public_mode_toggle: true
 
 # Spectral Signal Correction Approaches
 
+Fong: What are the current issues/weakness during spectral signal correction with traditional physics-based model? Will the ML or AI tools be able improve those weakness (with the strenghs of ML models)? In which ways (improve which parts of the physics models?) will we use to improve the weakness of physics-based model?
+
 This document compares three major approaches for removing unwanted signals from spectrometer data:
 
 1. Physics-Based Model
