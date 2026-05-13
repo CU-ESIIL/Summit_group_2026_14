@@ -3,6 +3,236 @@ title: AI-Physics Hybrid Modeling
 public_mode_toggle: true
 ---
 
+# Spectral Signal Correction Approaches
+
+This document compares three major approaches for removing unwanted signals from spectrometer data:
+
+1. Physics-Based Model
+2. Autoencoder-Based Model
+3. Hybrid Physics + Autoencoder (Physics-Informed Neural Network)
+
+---
+
+## 1. Physics-Based Model
+
+### Governing Principles
+
+- Radiative Transfer
+- Beer–Lambert Law
+
+## Forward Model
+
+The measured reflectance is modeled as:
+
+R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
+
+## Variable Definitions
+
+| Variable | Meaning | Physical Interpretation |
+|--------|--------|--------|
+| `R_m` | Measured reflectance | The total reflectance recorded by the spectrometer, containing both the desired signal and the unwanted background contribution. |
+| `R_w` | Water-only reflectance (or baseline reflectance) | The reflectance of the medium alone, without the unwanted background signal. This serves as the reference or baseline signal. |
+| `R_bg` | Background reflectance (unwanted signal) | The original unwanted signal or interference source before attenuation through the medium. |
+| `R` | Attenuation coefficient | A parameter describing how strongly the medium reduces the signal due to absorption and scattering. |
+| `K` | Scaling coefficient | A constant used to scale or calibrate the attenuation effect. It may account for instrument- or model-specific factors. |
+| `d` | Depth or path length | The distance that light travels through the medium. Greater values lead to stronger attenuation. |
+| `z` | Geometric factor | An additional factor representing geometry, incidence angle, sensor angle, or other path-related effects. |
+| `e` | Euler's number (`≈ 2.71828`) | The base of the natural exponential function used to model physical attenuation. |
+
+---
+
+### Advantages
+
+- **Physically interpretable**
+  - Every parameter has a clear meaning.
+  - Easier to justify scientifically.
+
+- **Works with small datasets**
+  - Does not require thousands of training examples.
+
+- **Generalizes better when physics is correct**
+  - Can perform well outside the calibration set.
+
+- **Transparent and reproducible**
+  - Other researchers can inspect and validate each assumption.
+
+- **Less risk of overfitting**
+  - Based on equations rather than flexible statistical fitting.
+
+- **Scientifically credible**
+  - Often preferred in disciplines such as optics and remote sensing.
+
+- **Computationally efficient**
+  - Usually requires only direct calculations.
+
+- **Useful for sensitivity analysis**
+  - You can examine how each parameter affects the result.
+
+### Limitations
+
+- **Requires accurate assumptions**
+  - Performance depends on how well the model represents reality.
+
+- **May oversimplify**
+  - Real systems can include nonlinear and interacting effects.
+
+- **Needs parameter estimation**
+  - Quantities like attenuation coefficients may be difficult to measure.
+
+- **Sensitive to parameter errors**
+  - Small inaccuracies can lead to biased corrections.
+
+- **Hard to capture unknown effects**
+  - Unmodeled instrument artifacts may remain.
+
+- **Domain-specific**
+  - Equations often need to be redesigned for new environments.
+
+---
+
+## 2. Autoencoder-Based Model
+
+### Core Methods
+
+- Autoencoder
+- Denoising Autoencoder
+
+### Advantages
+
+- **Learns complex nonlinear relationships**
+  - Can model interactions that are difficult to express analytically.
+
+- **Handles unknown artifacts**
+  - Can suppress contamination even when the mechanism is not fully understood.
+
+- **Minimal manual modeling**
+  - No need to derive equations.
+
+- **Highly adaptable**
+  - The same architecture can be used for many spectral datasets.
+
+- **Can improve with more data**
+  - Performance often scales as the dataset grows.
+
+- **Supports unsupervised and self-supervised learning**
+  - Useful when clean targets are limited.
+
+- **Integrates easily with downstream ML tasks**
+  - Denoising and feature extraction can be combined.
+
+### Limitations
+
+- **Requires substantial data**
+  - Usually needs many representative spectra.
+
+- **Less interpretable**
+  - Internal latent variables may not have physical meaning.
+
+- **Risk of overfitting**
+  - Especially when data are limited.
+
+- **May remove weak real peaks**
+  - Important but subtle features can be suppressed.
+
+- **Needs hyperparameter tuning**
+  - Architecture and training choices strongly affect results.
+
+- **Computationally more expensive**
+  - Training can require significant time and hardware.
+
+- **Potentially poor extrapolation**
+  - May fail on conditions not represented in training data.
+
+---
+
+## 3. Hybrid Physics + Autoencoder
+
+### Core Method
+
+- Physics-Informed Neural Network (PINN)
+- Physics-Informed Autoencoder
+
+### Advantages
+
+- Combines interpretability and flexibility.
+- Uses physics to constrain learning.
+- Often requires less data than purely data-driven models.
+- Preserves physically meaningful behavior.
+- Improves robustness and generalization.
+
+### Limitations
+
+- More complex to design and validate.
+- Requires expertise in both modeling and machine learning.
+- Loss functions and training procedures can be more difficult to tune.
+- Development and debugging may take longer.
+
+---
+
+## Summary Table
+
+| Aspect | Physics-Based Model | Autoencoder | Hybrid Physics + Autoencoder |
+|------|------|------|------|
+| Interpretability | Excellent | Limited | High |
+| Data Requirement | Low | Moderate to High | Moderate |
+| Ability to Model Unknown Effects | Limited | Strong | Strong |
+| Overfitting Risk | Low | Higher | Moderate |
+| Computational Cost | Low | Higher | Higher |
+| Scientific Transparency | Excellent | Moderate | High |
+| Generalization Beyond Training Data | Strong if assumptions hold | Can be weak | Strong |
+| Development Effort | Requires domain theory | Requires ML expertise | Requires both |
+| Flexibility | Limited | High | High |
+| Physical Consistency | Excellent | Limited | Excellent |
+
+---
+
+## When to Use Each Approach
+
+### Prefer Physics-Based Models When
+
+- The governing optical process is well understood.
+- Data are limited.
+- Interpretability is essential.
+- Physical parameters are available.
+- Computational resources are limited.
+
+### Prefer Autoencoders When
+
+- The contamination mechanism is complex or partially unknown.
+- Large spectral datasets are available.
+- Maximum denoising performance is the priority.
+- You want to capture nonlinear interactions.
+
+### Prefer Hybrid Methods When
+
+- You want both scientific interpretability and high predictive power.
+- Partial physical knowledge is available.
+- You have moderate amounts of data.
+- Maintaining physical consistency is important.
+
+---
+
+## Recommended Workflow
+
+1. Apply the physics-based correction model.
+2. Use an autoencoder to remove residual artifacts.
+3. Compare results with:
+   - Raw spectra
+   - Physics-corrected spectra
+   - Autoencoder-corrected spectra
+   - Hybrid model outputs
+4. Validate peak preservation and quantitative accuracy.
+
+---
+
+## Conclusion
+
+Each approach offers unique strengths:
+
+- **Physics-Based Models** provide interpretability, transparency, and strong scientific grounding.
+- **Autoencoders** offer flexibility and the ability to model complex unknown effects.
+- **Hybrid Physics-Informed Models** combine the best of both approaches and often deliver the most robust and scientifically consistent results.
+
 !!! tip "How to use this page during the Summit"
     - This page is your team’s shared workspace and final report-out page. It captures your group’s process and thinking throughout the Summit and will be used to share your work with others. 
     
@@ -19,7 +249,7 @@ public_mode_toggle: true
     - If you turn off 'Instructions' then you will only see the page content for public display.
     
 
-# Team 14 Home: AI-Physics Hybrid Modeling
+# Team 14 Home: Physics-Informed Autoencoder for Spectral Signal Correction
 
 !!! note "Day 1 directions"
     Change the title to the name of your project.
