@@ -431,6 +431,7 @@ Each approach offers unique strengths:
     
 
 ![Team hero image](assets/hero/hero.png)
+![Team hero image](assets/hero/hero2.png)
 
 !!! note "How to replace the image above"
     Upload an image that represents your project and welcome people to your page. 
