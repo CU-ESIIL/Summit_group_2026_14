@@ -318,13 +318,13 @@ Each approach offers unique strengths:
 
 Our team norms:
 
-- ...
-- ...
-- ...
+- Transparency
+- Say the thing
+- Win as a team
 
 Our decision making strategy:
 
-...
+## Diverse input, majority alignment
 
 ## Our product(s) 📣 { #product-direction .oasis-report-out-section .oasis-report-out-day2 }
 
