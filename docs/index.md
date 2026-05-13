@@ -15,7 +15,7 @@ This project presents a physics-based signal correction framework for removing
 
 ---
 
-## Forward Model
+# Forward Model
 
 The measured reflectance spectrum is modeled as:
 
@@ -25,7 +25,7 @@ R_m(\lambda) = R_w(\lambda) + \left(R_{bg}(\lambda) - R_w(\lambda)\right)e^{-2K_
 
 ---
 
-## Variable Definitions
+# Variable Definitions
 
 | Variable | Description |
 |--------|--------|
@@ -39,7 +39,7 @@ R_m(\lambda) = R_w(\lambda) + \left(R_{bg}(\lambda) - R_w(\lambda)\right)e^{-2K_
 
 ---
 
-## Physical Interpretation
+# Physical Interpretation
 
 The model assumes that the unwanted background signal (`R_{bg}(\lambda)`) is attenuated as light propagates through an absorbing and scattering medium.
 
@@ -52,7 +52,7 @@ This behavior is consistent with the Beer–Lambert Law and radiative transfer t
 
 ---
 
-## Inverse Model
+# Inverse Model
 
 Rearranging the forward model yields an analytical solution for estimating the original unwanted signal:
 
@@ -66,7 +66,7 @@ This inverse formulation enables the recovery and subsequent removal of backgrou
 
 ---
 
-## Why This Is a Physics-Based Model
+# Why This Is a Physics-Based Model
 
 This approach is considered physics-based because:
 
@@ -77,7 +77,7 @@ This approach is considered physics-based because:
 
 ---
 
-## Key Features
+# Key Features
 
 Unlike purely data-driven machine learning approaches, the proposed model:
 
@@ -90,7 +90,7 @@ Unlike purely data-driven machine learning approaches, the proposed model:
 
 ---
 
-## Advantages
+# Advantages
 
 - **Physically interpretable**  
   Every parameter has a clear scientific meaning.
@@ -112,7 +112,7 @@ Unlike purely data-driven machine learning approaches, the proposed model:
 
 ---
 
-## Limitations
+# Limitations
 
 - **Requires accurate assumptions**  
   Performance depends on how well the model represents reality.
@@ -131,7 +131,7 @@ Unlike purely data-driven machine learning approaches, the proposed model:
 
 ---
 
-## Applications
+# Applications
 
 This framework is well suited for:
 
@@ -144,7 +144,7 @@ This framework is well suited for:
 
 ---
 
-## Hybrid Physics-Informed Autoencoder
+# Hybrid Physics-Informed Autoencoder
 
 To further enhance performance, this project also explores a **hybrid physics-informed autoencoder** that combines the interpretability of the analytical model with the flexibility of deep learning.
 
@@ -157,13 +157,13 @@ This enables robust removal of both known and unknown spectral artifacts.
 
 ---
 
-## Project Goal
+# Project Goal
 
 The goal of this project is to develop a scientifically grounded and scalable solution for spectral signal correction by integrating first-principles modeling with modern machine learning techniques.
 
 ---
 
-## Conclusion
+# Conclusion
 
 This project provides a transparent and scientifically rigorous framework for removing unwanted spectral signals. By combining physical modeling with optional machine learning enhancements, the approach offers both interpretability and high-performance spectral correction.
 
@@ -179,20 +179,20 @@ This document compares three major approaches for removing unwanted signals from
 
 ---
 
-## 1. Physics-Based Model
+# 1. Physics-Based Model
 
-### Governing Principles
+ Governing Principles
 
 - Radiative Transfer
 - Beer–Lambert Law
 
-## Forward Model
+ Forward Model
 
 The measured reflectance is modeled as:
 
 R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 
-## Variable Definitions
+ Variable Definitions
 
 | Variable | Meaning | Physical Interpretation |
 |--------|--------|--------|
@@ -207,7 +207,7 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 
 ---
 
-### Advantages
+ Advantages
 
 - **Physically interpretable**
   - Every parameter has a clear meaning.
@@ -234,7 +234,7 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 - **Useful for sensitivity analysis**
   - You can examine how each parameter affects the result.
 
-### Limitations
+ Limitations
 
 - **Requires accurate assumptions**
   - Performance depends on how well the model represents reality.
@@ -256,14 +256,14 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 
 ---
 
-## 2. Autoencoder-Based Model
+ 2. Autoencoder-Based Model
 
-### Core Methods
+ Core Methods
 
 - Autoencoder
 - Denoising Autoencoder
 
-### Advantages
+ Advantages
 
 - **Learns complex nonlinear relationships**
   - Can model interactions that are difficult to express analytically.
@@ -286,7 +286,7 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 - **Integrates easily with downstream ML tasks**
   - Denoising and feature extraction can be combined.
 
-### Limitations
+ Limitations
 
 - **Requires substantial data**
   - Usually needs many representative spectra.
@@ -311,14 +311,14 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 
 ---
 
-## 3. Hybrid Physics + Autoencoder
+ 3. Hybrid Physics + Autoencoder
 
-### Core Method
+ Core Method
 
 - Physics-Informed Neural Network (PINN)
 - Physics-Informed Autoencoder
 
-### Advantages
+ Advantages
 
 - Combines interpretability and flexibility.
 - Uses physics to constrain learning.
@@ -326,7 +326,7 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 - Preserves physically meaningful behavior.
 - Improves robustness and generalization.
 
-### Limitations
+ Limitations
 
 - More complex to design and validate.
 - Requires expertise in both modeling and machine learning.
@@ -335,7 +335,7 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 
 ---
 
-## Summary Table
+ Summary Table
 
 | Aspect | Physics-Based Model | Autoencoder | Hybrid Physics + Autoencoder |
 |------|------|------|------|
@@ -352,9 +352,9 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 
 ---
 
-## When to Use Each Approach
+ When to Use Each Approach
 
-### Prefer Physics-Based Models When
+ Prefer Physics-Based Models When
 
 - The governing optical process is well understood.
 - Data are limited.
@@ -362,14 +362,13 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 - Physical parameters are available.
 - Computational resources are limited.
 
-### Prefer Autoencoders When
+ Prefer Autoencoders When
 
 - The contamination mechanism is complex or partially unknown.
 - Large spectral datasets are available.
 - Maximum denoising performance is the priority.
 - You want to capture nonlinear interactions.
-
-### Prefer Hybrid Methods When
+- Prefer Hybrid Methods When
 
 - You want both scientific interpretability and high predictive power.
 - Partial physical knowledge is available.
@@ -378,7 +377,7 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 
 ---
 
-## Recommended Workflow
+ Recommended Workflow
 
 1. Apply the physics-based correction model.
 2. Use an autoencoder to remove residual artifacts.
@@ -391,7 +390,7 @@ R_m = R_w + (R_{bg} - R_w)e^{-2RKdz}
 
 ---
 
-## Conclusion
+ Conclusion
 
 Each approach offers unique strengths:
 
