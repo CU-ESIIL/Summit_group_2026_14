@@ -191,6 +191,15 @@ Promising data sources:
 !!! note "methods"
     Add 2-4 methods/technologies we're testing (stats, models, viz).
 
+
+![Team hero image](assets/hero/hero.png)
+
+![Team hero image](assets/Picture3.png)
+![Team hero image](assets/hero/hero2.png)
+
+![Team hero image](assets/Picture2.png)
+![Team hero image](assets/fig2.png)
+
 [View shared code](https://github.com/CU-ESIIL/Summit_group_2026_14/tree/main/code){ .md-button }
 
 Methods/technologies we are testing:
