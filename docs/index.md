@@ -21,6 +21,8 @@ public_mode_toggle: true
 
 # Integrating AI Tools with Physics-based Models
 
+![Day 2 morning whiteboard or notes photo](assets/whiteboards/day2_morning_whiteboard1.jpg)
+
 ![notes photo](assets/Picture1.png)
 
 In what ways can AI tools and physics-based models can complement each other to mitigate their weaknesses?
@@ -40,14 +42,15 @@ This project presents a physics-based signal correction framework for removing
     Breakout Room #: Auditorium
 
     [ESIIL staff edit in Markdown](https://github.com/CU-ESIIL/Summit_group_2026_14/edit/main/docs/index.md?plain=1#L28){ .md-button target="_blank" rel="noopener" }
-    
+
+
+![Team hero image](assets/hero/hero.png)
+
 ![Team hero image](assets/Picture3.png)
 ![Team hero image](assets/hero/hero2.png)
 
 ![Team hero image](assets/Picture2.png)
 ![Team hero image](assets/fig2.png)
-
-![Team hero image](assets/hero/hero.png)
 
 
 
