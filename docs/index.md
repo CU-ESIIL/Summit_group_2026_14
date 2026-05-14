@@ -21,7 +21,7 @@ public_mode_toggle: true
 
 # Integrating AI Tools with Physics-based Models
 
-![notes photo](documentation/Picture1.png)
+![notes photo](assets/Picture1.png)
 
 Spectral measurements acquired from spectrometers often contain unwanted signal components arising from background reflectance, absorption, scattering, and instrument-related artifacts. These interfering contributions can obscure the true spectral signature of the target material and reduce the accuracy of downstream analyses such as material identification, quantitative estimation, and machine learning-based prediction. On the other hand, using machine learning is not a suitable option either. We are dealing with physics in this problem, and traditional AI approaches are not robust enough. Their output is not reliable enough. Furthermore, we need a considerable amount of data to train the model to learn this physics, and there is still no guarantee that the model will be unbiased and reliable. So to answer this question we would like to explore that in what ways can AI tools and physics-based models can complement each other to mitigate their weaknesses.
 
