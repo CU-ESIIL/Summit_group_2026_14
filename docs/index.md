@@ -123,7 +123,8 @@ Long term:
 - Tools
 - Workshop
 
-![Day 2 morning whiteboard or notes photo](assets/whiteboards/day2_morning_whiteboard.svg)
+![Day 2 morning whiteboard or notes photo](assets/whiteboards/day2_morning_whiteboard2.jpg)
+![Day 2 morning whiteboard or notes photo](assets/whiteboards/day2_morning_whiteboard2.jpg)
 
 *Morning whiteboard or notes showing the question, hypotheses, and context we used to start Day 2.*
 
