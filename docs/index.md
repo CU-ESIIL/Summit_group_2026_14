@@ -84,6 +84,8 @@ This project presents a physics-based signal correction framework for removing
 | Mo Ahmadi| Purdue Univeristy | mahmadig@purdue.edu|mahmadig |
 | Abdulganiyu Jimoh| Utah State Univeristy | abdulganiyu.jimoh@usu.edu|Jimoh1993|
 
+![notes photo](assets/team_photo.jpg)
+
 ## Team Norms and Decision Making { #team-norms-and-decision-making }
 
 !!! note "Day 1 task"
