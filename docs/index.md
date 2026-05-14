@@ -128,13 +128,12 @@ Our decision making strategy:
 Short term:
 
 - A case study proposal for a hybrid framework integrating AI tools with physics-based models
+- Developing scientifically grounded and scalable solutions integrating first-principles modeling with machine learning techniques.
 
 Long term:
 
-- Developing scientifically grounded and scalable solutions integrating first-principles modeling with machine learning techniques.
 - Papers
 - Tools
-- Workshop
 
 ![Day 2 morning whiteboard or notes photo](assets/whiteboards/day2_morning_whiteboard1.jpg)
 ![Day 2 morning whiteboard or notes photo](assets/whiteboards/day2_morning_whiteboard2.jpg)
